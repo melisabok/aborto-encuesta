@@ -24,7 +24,7 @@ text {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var diameter = 485,
+var diameter = 600,
 		format = d3.format(",d"),
 		all_nodes,
 		female_nodes,
@@ -33,20 +33,20 @@ var diameter = 485,
 
 var bubble_all = d3.layout.pack()
 		.sort(null)
-		.size([485, 485])
+		.size([900, 700])
 		.padding(1.5);
 
 var bubble = d3.layout.pack()
 		.sort(null)
-		.size([diameter, diameter])
-		.padding(1.5);
+		.size([600, 700])
+		.padding(0.5);
 
 var svg = d3.select("body").append("svg")
-		.attr("width", 970)
-		.attr("height", 787)
+		.attr("width", 1248)
+		.attr("height", 700)
 		.attr("class", "bubble");
 
-d3.json("../most_informative_features.json", function(error, json) {
+d3.json("./most_informative_features.json", function(error, json) {
 	if (error) throw error;
 
 	var females = [],
@@ -125,7 +125,7 @@ function update(nodes, mode){
 					if(d.packageName == 'negative') {
 						return "translate(" + (d.x + 1) + "," + d.y + ")";
 					}
-					return "translate(" + (d.x + 485) + "," + d.y + ")";
+					return "translate(" + (d.x + diameter) + "," + d.y + ")";
 				}
 
 			});
